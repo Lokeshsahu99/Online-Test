@@ -1,0 +1,12 @@
+<?php
+function uploadImage(array $file): string {
+    $allowedMime = ['image/jpeg', 'image/png'];
+    $mime = mime_content_type($file['tmp_name']);
+    if (!in_array($mime, $allowedMime)) {
+        throw new Exception("Invalid file type.");
+    }
+    $newName = uniqid('img_') . '.jpg';
+    move_uploaded_file($file['tmp_name'], "uploads/$newName");
+    return $newName;
+}
+?>

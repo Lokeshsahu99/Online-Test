@@ -1,0 +1,1 @@
+Use Laravel Queues or a job scheduler (e.g., Supervisor) for reliable asynchronous processing. Avoid using exec().

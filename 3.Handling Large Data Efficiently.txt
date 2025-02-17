@@ -1,0 +1,18 @@
+<?php
+// Batch inserts with transactions for efficiency
+function processLargeCSV(string $filePath, PDO $db): void {
+    $db->beginTransaction();
+    try {
+        $handle = fopen($filePath, 'r');
+        $stmt = $db->prepare("INSERT INTO table_name (col1, col2) VALUES (?, ?)");
+        while (($data = fgetcsv($handle, 1000)) {
+            $stmt->execute([$data[0], $data[1]]);
+        }
+        $db->commit();
+        fclose($handle);
+    } catch (Exception $e) {
+        $db->rollBack();
+        throw $e;
+    }
+}
+?>

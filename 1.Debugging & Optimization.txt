@@ -1,0 +1,8 @@
+<?php
+// QUESTION: Optimize the function for performance
+function getUserPosts($userId, $db) {
+    $stmt = $db->prepare("SELECT id, title, content FROM posts WHERE user_id = ?");
+    $stmt->execute([$userId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+?>

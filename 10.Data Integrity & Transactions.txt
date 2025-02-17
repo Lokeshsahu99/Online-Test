@@ -1,0 +1,13 @@
+<?php
+// Use Laravel's DB facade for transactions
+DB::beginTransaction();
+try {
+    DB::table('orders')->insert([...]);
+    DB::table('order_items')->insert([...]);
+    DB::table('payments')->insert([...]);
+    DB::commit();
+} catch (Exception $e) {
+    DB::rollBack();
+    throw $e;
+}
+?>

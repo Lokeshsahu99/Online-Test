@@ -1,0 +1,10 @@
+<?php
+use Filament\Tables\Actions\Action;
+
+Action::make('approve')
+    ->icon('heroicon-o-check')
+    ->action(function (Post $post) {
+        $post->update(['status' => 'approved']);
+    })
+    ->successNotificationTitle('Post approved!');
+?>

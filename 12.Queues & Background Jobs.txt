@@ -1,0 +1,4 @@
+<?php
+// Dispatch a job to the queue
+SendEmailJob::dispatch($user, $data)->onQueue('emails');
+?>

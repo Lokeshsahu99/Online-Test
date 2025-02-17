@@ -1,0 +1,14 @@
+<?php
+// Validate JSON and log errors
+function parseJsonResponse(string $json): array {
+    $data = json_decode($json, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        error_log("JSON Error: " . json_last_error_msg());
+        return [];
+    }
+    return [
+        'field1' => $data['field1'] ?? 'default1',
+        'field2' => $data['field2'] ?? 'default2',
+    ];
+}
+?>

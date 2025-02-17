@@ -1,0 +1,6 @@
+<?php
+// Cache with a 1-hour TTL
+$users = Cache::remember('users', 3600, function () {
+    return User::select('id', 'name')->get();
+});
+?>

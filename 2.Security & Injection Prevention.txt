@@ -1,0 +1,6 @@
+
+QUESTION: What's wrong with the code? How would you fix it?
+ANSWER: 
+
+$stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->bind_param("i", $id);
